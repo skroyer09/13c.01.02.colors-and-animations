@@ -1,3 +1,5 @@
+"use strict";
+
 function load() {
   const button = document.querySelector(".btn");
 
@@ -6,9 +8,6 @@ function load() {
 
   // Toggles the "dark-mode" class based on if the media query matches
   function toggleDarkMode(state) {
-    // Older browser don't support the second parameter in the
-    // classList.toggle method so you'd need to handle this manually
-    // if you need to support older browsers.
     document.documentElement.classList.toggle("dark-mode", state);
   }
 
@@ -23,5 +22,20 @@ function load() {
     document.documentElement.classList.toggle("dark-mode");
   });
 }
+
+const headerGraphics = document.querySelector(".header_graphics");
+
+const risingKeyframes = [{ transform: "translateY(0vw)" }, { transform: "translateY(-60vw)" }];
+
+const risingProperties = {
+  duration: 1000,
+  iterations: 1,
+  easing: "linear",
+  fill: "forwards",
+};
+
+headerGraphics.addEventListener("click", () => {
+  headerGraphics.animate(risingKeyframes, risingProperties);
+});
 
 window.addEventListener("DOMContentLoaded", load);
